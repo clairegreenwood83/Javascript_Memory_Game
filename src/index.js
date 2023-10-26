@@ -49,6 +49,8 @@ const cardArray = [
     },
 ];
 
+let completionTime = localStorage.getItem('completionTime');
+
 cardArray.sort(() => 0.5 - Math.random())
 
 const gridDisplay = document.querySelector('#grid')
@@ -76,10 +78,10 @@ function checkMatch() {
     if (optionOneId == optionTwoId) {
         cards[optionOneId].setAttribute('src', 'images/blank.png')
         cards[optionTwoId].setAttribute('src', 'images/blank.png')
-        alert('You have clicked the same image!')
+        //alert('You have clicked the same image!')
     }
     if (cardsChosen[0] == cardsChosen[1]) {
-        alert('You found a match!')
+        //alert('You found a match!')
         cards[optionOneId].setAttribute('src', 'images/white.png')
         cards[optionTwoId].setAttribute('src', 'images/white.png')
         cards[optionOneId].removeEventListener('click', flipCard)
@@ -88,7 +90,7 @@ function checkMatch() {
     } else {
         cards[optionOneId].setAttribute('src', 'images/blank.png')
         cards[optionTwoId].setAttribute('src', 'images/blank.png')
-        alert('Sorry try again!')
+        //alert('Sorry try again!')
     }
     resultDisplay.textContent = cardsWon.length
     cardsChosen = [];
@@ -100,10 +102,23 @@ function checkMatch() {
         const elapsedTimeSeconds = Math.floor(elapsedTime / 1000);
         localStorage.setItem('completionTime', elapsedTimeSeconds);
         stopTimer();
+        
+       // if (completionTime !== null) {
+           // document.getElementById('completionTimeDisplay').textContent = Math.floor(completionTime) + ' seconds';
+       // }
     }
 }
 
+let gameStarted = false;
+
 function flipCard() {
+    if (!gameStarted) {
+        startTimer();
+        gameStarted = true;
+    }
+    if (cardsChosen.length === 2) {
+        return;
+    }
     const cardId = this.getAttribute('data-id') // to get the id of the card clicked
     cardsChosen.push(cardArray[cardId].name)
     cardsChosenIds.push(cardId) // puts the name of the card clicked into cardsChosen array
@@ -113,11 +128,8 @@ function flipCard() {
     }
 }
 
+
 // timer functionality
-let startButton = document.getElementById('start');
-let stopButton = document.getElementById('stop');
-startButton.addEventListener('click', startTimer);
-stopButton.addEventListener('click', stopTimer);
 const displayElement = document.getElementById('timerDisplay');
 
 let startTime;
