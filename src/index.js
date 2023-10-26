@@ -133,3 +133,10 @@ function stopTimer() {
         startTime = null;
       }
 }
+
+function updateTime() {
+    const elapsedTime = Date.now() - startTime;
+    const elapsedTimeSeconds = Math.floor(elapsedTime / 1000);
+
+    displayElement.innerHTML = elapsedTimeSeconds + ' seconds';
+}

@@ -1,6 +1,40 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: rgb(246, 184, 231);
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: rgb(49, 49, 49);
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 #grid {
-    width: 400px;
-    height: 300px;
+    width: 500px;
+    height: 350px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#buttons {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#time {
+    display: inline;
+    font-weight: bold;
+    color: rgb(49, 49, 49);
 }
