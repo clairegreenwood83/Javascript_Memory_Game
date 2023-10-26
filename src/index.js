@@ -110,6 +110,10 @@ function flipCard() {
 }
 
 // timer functionality
+let startButton = document.getElementById('start');
+
+start.addEventListener('click', startTimer);
+
 let startTime;
 let interval;
 const displayElement = document.getElementById('timerDisplay');
