@@ -111,12 +111,13 @@ function flipCard() {
 
 // timer functionality
 let startButton = document.getElementById('start');
-
-start.addEventListener('click', startTimer);
+let stopButton = document.getElementById('stop');
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
+const displayElement = document.getElementById('timerDisplay');
 
 let startTime;
 let interval;
-const displayElement = document.getElementById('timerDisplay');
 
 function startTimer() {
     if (!startTime) {
@@ -125,15 +126,10 @@ function startTimer() {
     }
 }
 
-function stopTime() {
+function stopTimer() {
     if (interval) {
         clearInterval(interval);
         interval = null;
         startTime = null;
       }
-}
-
-function updateTime() {
-    const difference = Math.floor((Date.now() - startTime) / 1000);
-    displayElement.innerHTML = difference + ' seconds';
 }
