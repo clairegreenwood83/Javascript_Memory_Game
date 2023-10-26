@@ -6,8 +6,10 @@ A fun and interactive memory game built using HTML, CSS, and JavaScript. Test yo
 The game board consists of a set of cards each with an image of a food item hidden. The objective is to find and match pairs of the same food items. But beware! Make sure you don't click on the same image, or you'll have to try again.
 
 ## Features
-Randomized Board: Every time you play, the board is shuffled to ensure a new challenge.
-Interactive UI: Cards flip to reveal food images, and a message is displayed for matching and non-matching pairs.
+- Randomized Board: Every time you play, the board is shuffled to ensure a new challenge.
+- Interactive UI: Cards flip to reveal food images, and a message is displayed for matching and non-matching pairs.
+
+![Screenshot 2023-10-26 at 11 38 04](https://github.com/clairegreenwood83/Javascript_Memory_Game/assets/118351853/0645fd3b-23c5-48b2-87b2-ead9b0a52db0)
 
 ## Food Items in the Game
 - Cheeseburger
