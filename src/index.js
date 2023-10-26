@@ -96,6 +96,7 @@ function checkMatch() {
 
     if (cardsWon.length == cardArray.length/2) {
         resultDisplay.textContent = 'Congratulations you found them all!'
+        stopTimer();
     }
 }
 
