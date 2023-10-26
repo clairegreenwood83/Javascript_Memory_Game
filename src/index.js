@@ -96,6 +96,9 @@ function checkMatch() {
 
     if (cardsWon.length == cardArray.length/2) {
         resultDisplay.textContent = 'Congratulations you found them all!'
+        const elapsedTime = Date.now() - startTime;
+        const elapsedTimeSeconds = Math.floor(elapsedTime / 1000);
+        localStorage.setItem('completionTime', elapsedTimeSeconds);
         stopTimer();
     }
 }
