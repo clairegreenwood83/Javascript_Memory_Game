@@ -38,3 +38,21 @@ h1 {
     font-weight: bold;
     color: rgb(49, 49, 49);
 }
+
+table {
+    width: 25%;
+    border-collapse: collapse;
+    background-color: #f352eb;
+    color: white;
+}
+
+th,
+td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #c205b8;
+    color: white;
+}

@@ -48,6 +48,7 @@ const cardArray = [
         img: 'images/pizza.png',
     },
 ];
+displayLeaderboard();
 
 let completionTime = localStorage.getItem('completionTime');
 
@@ -102,11 +103,54 @@ function checkMatch() {
         const elapsedTimeSeconds = Math.floor(elapsedTime / 1000);
         localStorage.setItem('completionTime', elapsedTimeSeconds);
         stopTimer();
-        
-       // if (completionTime !== null) {
-           // document.getElementById('completionTimeDisplay').textContent = Math.floor(completionTime) + ' seconds';
-       // }
+
+        const userName = prompt("Congratulations! Please enter your name for the leaderboard:", "");
+            if (userName) {
+                updateLeaderboard(userName, elapsedTimeSeconds);
+            }
     }
+}
+
+function getLeaderboard() {
+    const leaderboardString = localStorage.getItem('leaderboard');
+    if (leaderboardString) {
+        return JSON.parse(leaderboardString);
+    } else {
+        return [];
+    }
+}
+
+function updateLeaderboard(name, time) {
+    const leaderboard = getLeaderboard();
+    leaderboard.push({ name: name, time: time });
+    
+    leaderboard.sort((a, b) => a.time - b.time);
+
+    localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    displayLeaderboard();
+}
+
+function displayLeaderboard() {
+    const leaderboard = getLeaderboard();
+    const leaderboardBody = document.getElementById('leaderboardBody');
+    leaderboardBody.innerHTML = '';
+
+    leaderboard.forEach((entry, index) => {
+        const row = document.createElement('tr');
+        const rankCell = document.createElement('td');
+        rankCell.textContent = index + 1;
+        row.appendChild(rankCell);
+
+        const nameCell = document.createElement('td');
+        nameCell.textContent = entry.name;
+        row.appendChild(nameCell);
+
+        const timeCell = document.createElement('td');
+        timeCell.textContent = `${entry.time} seconds`;
+        row.appendChild(timeCell);
+
+        leaderboardBody.appendChild(row);
+    });
 }
 
 let gameStarted = false;
