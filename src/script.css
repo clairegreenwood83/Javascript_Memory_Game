@@ -1,14 +1,6 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    background-color: rgb(246, 184, 231);
-}
-
-h1 {
-    display: flex;
-    justify-content: center;
-    color: rgb(49, 49, 49);
-}
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 #main {
     display: flex;
@@ -42,8 +34,7 @@ h1 {
 table {
     width: 25%;
     border-collapse: collapse;
-    background-color: #f352eb;
-    color: white;
+    background-color: #fad7f8;
 }
 
 th,
